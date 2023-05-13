@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +8,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MaterialApp(
+    // home: TextScreen(),
     home: firstPage(),
   ));
 }
@@ -78,11 +77,11 @@ class _firstPageState extends State<firstPage> {
                           pickedDate); //pickedDate output format => 2021-03-10 00:00:00.000
 
                       String formattedDate =
-                      DateFormat('yyyy-MM-dd').format(pickedDate);
-                      print(
-                          formattedDate);
+                          DateFormat('yyyy-MM-dd').format(pickedDate);
+                      print(formattedDate);
                       setState(() {
-                        dateTimecontroller.text = formattedDate; //set output date to TextField value.
+                        dateTimecontroller.text =
+                            formattedDate; //set output date to TextField value.
                       });
                     }
                   },
@@ -114,7 +113,8 @@ class _firstPageState extends State<firstPage> {
   }
 
   Future<void> realtimeDatabaseApi() async {
-    DatabaseReference ref = FirebaseDatabase.instance.ref("myRealTimeDB").push();
+    DatabaseReference ref =
+        FirebaseDatabase.instance.ref("myRealTimeDB").push();
 
     String? id = ref.key;
     await ref.set({

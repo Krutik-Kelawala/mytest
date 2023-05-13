@@ -38,6 +38,7 @@ dependencies:
   firebase_database :
   intl:
   overlay_support:
+  google_fonts:
 
 dev_dependencies:
   flutter_test:
